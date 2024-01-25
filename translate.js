@@ -1,20 +1,23 @@
-const url_chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const url_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 function hex_to_url(hex) {
-    var value = parseInt(hex, 16);
-    var url = "";
-    while (value != 0) {
-        var rem = value % 62;
-        value = Math.floor(value / 62);
-        url = url_chars.substring(rem, rem + 1) + url;
+    var Hex = BigInt('0x' + hex);
+    var value = BigInt(Hex.toString(10));
+    var url = '';
+    while (value != 0n) {
+        var rem = value % 62n;
+        value = value / 62n;
+        url = url_chars[rem] + url;
     }
     return url;
 }
 
 function url_to_hex(url) {
-    var value = 0;
-    for (let i = 0; i < url.length; i++) {
-        value += (62 ** i) * url_chars.indexOf(url.substring(url.length - i - 1, url.length - i));
+    var length = BigInt(url.length);
+    var value = 0n;
+    for (let i = 0n; i < length; i++) {
+        var char = url[length - i - 1n];
+        value += (62n ** i) * BigInt(url_chars.indexOf(char));
     }
     return value.toString(16);
 }
