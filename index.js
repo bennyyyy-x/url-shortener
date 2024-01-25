@@ -1,31 +1,28 @@
 const express = require('express');
-const app = express();
+const bodyParser = require('body-parser');
+const multer = require('multer');
 const path = require("path");
-const port = process.env.PORT || 8080;
-
-// var mongoose = require('mongoose');
-// mongoose.connect("mongodb+srv://bennyxu:T3eL8KOMydkKc6Ya@cluster0.h4t5cmh.mongodb.net/?retryWrites=true&w=majority");
-
-// var url_schema = mongoose.Schema({
-//     long_url: String,
-//     short_url: String
-// });
-// var urls = mongoose.model("url", url_schema);
-
-app.use(express.static(path.join(__dirname)))
+const upload = multer();
+const app = express();
 
 app.get('/', function(req, res){
-    console.log(__dirname);
-    res.sendFile(path.join(__dirname, "page.html"));
+    res.render('page', { msg: "Random Paragraph" });
 });
 
-// for html script
-function get_long_url() {
-    var long_url = document.getElementById("long_url").value;
-    console.log("long_url is " + long_url);
-    document.write(long_url);
-}
+app.set('view engine', 'pug');
+app.set('views', './views');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(upload.array());
+app.use(express.static('views'));
 
-app.listen(port, () => {
-    console.log("Listening on port " + port);
+const mdb = require("./find_store.js");
+
+app.post('/', function(req, res){
+    var long_url = req.body.long;
+    var msg = mdb.find_or_store(long_url).then(function(value) {
+        res.render("page", { msg: path.join(__dirname, value) });
+    });
 });
+
+app.listen(8080);
