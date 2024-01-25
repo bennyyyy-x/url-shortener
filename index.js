@@ -35,7 +35,7 @@ app.post('/', function(req, res) {
     }
 });
 
-app.get('/:id', function(req, res) {
+app.use('/:id', function(req, res) {
     var url = req.params.id;
 
     var db_id = translate.url_to_hex(url);
