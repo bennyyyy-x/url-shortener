@@ -21,7 +21,7 @@ const mdb = require("./find_store.js");
 app.post('/', function(req, res){
     var long_url = req.body.long;
     var msg = mdb.find_or_store(long_url).then(function(value) {
-        res.render("page", { msg: path.join(__dirname, value) });
+        res.render("page", { msg: (req.get('host') + req.originalUrl + value) });
     });
 });
 
