@@ -26,3 +26,4 @@ function get_long_url() {
 }
 
 app.listen(port);
+console.log(__dirname);
