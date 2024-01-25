@@ -12,7 +12,7 @@ const port = process.env.PORT || 8080;
 // });
 // var urls = mongoose.model("url", url_schema);
 
-// app.use(express.static('/'));
+app.use(express.static(path.join(__dirname)))
 
 app.get('/', function(req, res){
     console.log(__dirname);
@@ -27,5 +27,5 @@ function get_long_url() {
 }
 
 app.listen(port, () => {
-    console.log("Listening on port" + port);
+    console.log("Listening on port " + port);
 });
