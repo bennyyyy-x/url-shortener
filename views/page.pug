@@ -1,0 +1,12 @@
+doctype html
+html
+    head
+        title Form Tester
+    body
+        form(action = "/", method = "POST")
+            div
+                label(for = "url") Enter Your Url:
+                input(name = "long" id = "url_input")
+            br
+            button(type = "submit") Shorten it!
+            p= msg
