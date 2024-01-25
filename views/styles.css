@@ -1,0 +1,34 @@
+h1 {
+    text-align: center;
+}
+
+div {
+    /* background: linear-gradient(0deg, #8affe2 41%, #ffffff 100%); */
+
+    width: 800px;
+    height: 300px;
+    padding: 100px;
+
+    border: 5px solid gray;
+    border-style: ridge;
+    border-radius: 70px;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+label, p {
+    font-size: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+button {
+    font-size: 16px;
+}
