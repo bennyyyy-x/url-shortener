@@ -1,12 +1,14 @@
 doctype html
 html
     head
-        title Form Tester
+        title URL Shortener
+        link(rel='stylesheet', type='text/css', href='/styles.css')
+
     body
+        h1 URL Shortener By Jinglin Xu
         form(action = "/", method = "POST")
             div
-                label(for = "url") Enter URL:
+                label(for = "url") Enter Your URL:
                 input(name = "long" id = "url_input")
-            br
-            button(type = "submit") Shorten it!
-            p= msg
+                button(type = "submit") Shorten it!
+                p= msg
