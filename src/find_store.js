@@ -2,7 +2,7 @@ const MongoClient = require('mongodb');
 const url = 'mongodb+srv://bennyxu:T3eL8KOMydkKc6Ya@cluster0.h4t5cmh.mongodb.net/?retryWrites=true&w=majority';
 const client = new MongoClient.MongoClient(url);
 
-const translate = require('./translate.js');
+const translate = require('./src/translate.js');
 
 async function find_or_store(long_url) {
     try {

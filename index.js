@@ -4,9 +4,9 @@ const multer = require('multer');
 const upload = multer();
 const app = express();
 
-const mdb = require('./find_store.js');
-const translate = require('./translate.js');
-const redirect = require('./redirect.js');
+const mdb = require('./src/find_store.js');
+const translate = require('./src/translate.js');
+const redirect = require('./src/redirect.js');
 
 app.get('/', function(req, res) {
     res.render('page', { msg: '' });
